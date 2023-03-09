@@ -1,0 +1,101 @@
+﻿@model FPTBookS.Models.Product
+
+@{ Layout = "~/Views/_LayoutAdmin.cshtml"; }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <div>
+        <h4>Delete Product</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Author.AuthorID)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Author.AuthorID)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Author.AuthorName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Author.AuthorName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Category.CategoryName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category.CategoryName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Publisher.PublishName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Publisher.PublishName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Imagas)
+            </dt>
+
+            <dd>
+                <img src="/contents/images/@Url.Content(Model.Imagas)" style="width: 180px; height: 300px;" />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Descriptions)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Descriptions)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+    <h3>Are you sure you want to delete this?</h3>
+</body>
+</html>

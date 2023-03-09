@@ -1,0 +1,72 @@
+﻿@model FPTBookS.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_LayoutUser.cshtml";
+}
+
+<h2>Details Books</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Author.AuthorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author.AuthorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Publisher.PublishName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Publisher.PublishName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>    
+            Images
+        </dt>
+
+        <dd>
+            <img src="/contents/images/@Url.Content(Model.Imagas)" style="width: 180px; height: 300px;" />
+
+        </dd>
+
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

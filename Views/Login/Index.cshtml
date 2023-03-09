@@ -1,0 +1,59 @@
+﻿@model FPTBookS.Models.User
+@{
+    Layout = "~/Views/_LayoutHome.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/jquery.validate.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.js"></script>
+    <link rel="stylesheet" href="~/Contents/style.css" />
+</head>
+<body>
+    <div id="form-register">
+        @using (Html.BeginForm("Authen", "Login", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <table>
+                <tr class="title-form">
+                    <th colspan="2">Login</th>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Username)</td>
+                    <td>@Html.TextBoxFor(m => m.Username, new { style = "width:100% " })</td>
+                </tr>
+                <tr>
+                    <td colspan="2">@Html.ValidationMessageFor(m => m.Username)</td>
+                </tr>
+                <tr colspan="2">
+                    @if (ViewBag.Error != null)
+                    {
+                        <span class="field-validation-error">@ViewBag.Error</span>
+                    }
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Password)</td>
+                    <td>@Html.PasswordFor(m => m.Password, new { style = "width:100%" })</td>
+                </tr>
+                <tr>
+                    <td colspan="2">@Html.ValidationMessageFor(m => m.Password)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input class="btn btn-primary" type="submit" value="Login" />
+                        <input class="btn btn-primary" type="reset" value="Reset" />
+                        <a class="btn btn-primary" href="@Url.Action("Register","Login")">Register</a>
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+</body>
+</html>

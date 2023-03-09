@@ -1,0 +1,58 @@
+﻿@model IEnumerable<FPTBookS.Models.Publisher>
+
+@{
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/jquery.validate.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.js"></script>
+
+    <link rel="stylesheet" href="~/Contents/style.css" />
+</head>
+<body>
+    <div class="form-login-1 ">
+        <a class="title-form">
+            <div colspan="2">Management Publisher</div>
+        </a>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table-1" border="1px">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PublishID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PublishName)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PublishID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PublishID })
+            </td>
+        </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

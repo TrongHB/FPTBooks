@@ -1,0 +1,80 @@
+﻿@model IEnumerable<FPTBookS.Models.Bill>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BillDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BillCustomer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BillAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BillPhone)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr style="background-color: lightgray">
+        <td>
+            @Html.DisplayFor(modelItem => item.BillDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BillCustomer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BillAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BillPhone)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.BillID })
+        </td>
+    </tr>
+    <tr>
+        <td colspan="5">
+            <table class="table">
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Product Image</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+                @foreach (var itemB in item.BillDetails)
+                {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => itemB.ProductID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => itemB.Product.ProductName)
+                </td>
+                <td>
+                    <img src="/contents/images/@Url.Content(itemB.Product.Imagas)" style="width: 80px; height: 100px;" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => itemB.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => itemB.UnitPrice)
+                </td>
+            </tr>
+                }
+            </table>
+        </td>    
+    </tr>
+}
+
+</table>

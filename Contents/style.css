@@ -1,0 +1,61 @@
+﻿.field-validation-error {
+    color: red;
+}
+
+#form-register {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    border: 1px solid #ccc;
+    padding: 10px 10px;
+}
+
+#form-login {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    border: 1px solid #ccc;
+    padding: 10px 10px;
+}
+.form-login-1 {
+    position: absolute;
+    top: 10%;
+    left: 0%;
+    border: 1px solid #ccc;
+    padding: 10px 10px;
+}
+.form-login-2 {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    border: 1px solid #ccc;
+    padding: 10px 10px;
+}
+
+table {
+    width: 500px;
+}
+.table-1 {
+    width: 1500px;
+    border: 1px;
+}
+
+.title-form {
+    text-align: center;
+    font-size: 30px;
+}
+
+card1 {
+    display: block;
+    max-width: 230px;
+    max-height: 95px;
+    width: auto;
+    height: auto;
+}
+
+#your-img {
+    height: auto;
+    width: auto;
+    max-width: 300px;
+    max-height: 300px;
+}

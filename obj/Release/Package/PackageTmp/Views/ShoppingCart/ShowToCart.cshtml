@@ -1,0 +1,94 @@
+﻿@model FPTBookS.Models.Cart
+@{
+    Layout = "~/Views/_LayoutUser.cshtml";
+}
+
+<!DOCTYPE html>
+
+<h2>ShowToCart</h2>
+@if (Model!= null)
+{
+    <table class="table" border="1px">
+        <thead>
+            <tr>
+                <th>Book Name</th>
+                <th>Image</th>
+                <th>         Price</th>
+                <th>         Quantity</th>
+                <th>         Sum</th>
+                <th>         Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                double total = Convert.ToDouble(item._shopping_product.Price.Value * item._shopping_quantity);
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item._shopping_product.ProductName)
+                </td>
+                <td>
+                    <img src="/contents/images/@Url.Content(item._shopping_product.Imagas)" style="width: 90px; height: 150px;"/>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item._shopping_product.Price)
+                </td>
+                <td>
+                    @using (Html.BeginForm("Update_Quantity_Cart", "ShoppingCart"))
+                    {
+                        <input type="hidden" value="@item._shopping_product.ProductID" name="ID_Product" />
+                        <input type="number" value="@item._shopping_quantity" name="Quantity" />
+                        <input type="submit" value="Update Quantity" />
+                    }
+                </td>
+                <td>
+                   Total: @total
+                </td>
+                <td>
+                    <a href="/ShoppingCart/RemoveCart/@item._shopping_product.ProductID">Remove</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" style="text-align:right">Sum Total: @Model.Total_Money()</td>
+            </tr>
+            <tr>
+                <td colspan="6" style="text-align:center">
+                    @using (Html.BeginForm("Create", "Bills",FormMethod.Post))
+                    {
+                    <table style="border-collapse:separate; border-spacing:5px">
+                        <tr>
+                            <td>Customer's name: </td>
+                            <td>
+                                <input type="text" name="BillCustomer" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Customer's address: </td>
+                            <td>
+                                <input type="text" name="BillAddress" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Customer's phone: </td>
+                            <td>
+                                <input type="text" name="BillPhone" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="submit" value="CheckOut" class="btn btn-success" />
+                            </td>
+                        </tr>
+                    </table>
+                    }
+                </td>
+            </tr>
+
+        </tfoot>
+    </table>
+    <a href="@Url.Action("User","Home")">Continue to Shopping</a>
+}
